@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}Recipe Finder{% endblock %}</title>
+
+        <link href ="{% static 'recipe_finder/index.css' %}" rel="stylesheet">
+        <script src="{% static 'recipe_finder/index.js' %}"> </script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="sidebar">
+                <form>
+                    {% csrf_token %}
+                    <input class="search" type="text" name="q" placeholder="Search for Recipe">
+                </form>
+                <div>
+                    <a href="{% url 'home' %}">Home</a>
+                </div>
+                <div>
+                    Saved Recipes
+                </div>
+                <div>
+                    Random Recipe
+                </div>
+                {% block nav %}
+                {% endblock %}
+            </div>
+          
+                {% block body %}
+                {% endblock %}
+            
+        </div>
+
+    </body>
+</html>
